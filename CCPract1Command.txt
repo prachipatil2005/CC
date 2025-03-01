@@ -1,0 +1,9 @@
+sudo grep -c "svm\|vmx" /proc/cpuinfo  # Check if CPU supports virtualization (SVM for AMD, VMX for Intel)  
+sudo apt update  # Update package lists  
+sudo apt upgrade -y  # Upgrade all installed packages  
+sudo apt install -y cpu-checker  # Install CPU checker to verify virtualization support  
+kvm-ok  # Check if KVM is supported and enabled  
+sudo apt install -y qemu-kvm libvirt-daemon-system virtinst libvirt-clients bridge-utils  # Install KVM, libvirt, and related tools  
+sudo systemctl enable --now libvirtd  # Enable and start the libvirt daemon  
+sudo systemctl start libvirtd  # Start libvirt daemon (redundant if already enabled)  
+virt-manager  # Launch Virtual Machine Manager GUI  
