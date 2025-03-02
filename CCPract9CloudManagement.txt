@@ -1,0 +1,89 @@
+Step 1: Switch to a Sudo User (prachi)
+bash
+Copy
+Edit
+su -- prachi
+Step 2: Create a New User (anu)
+bash
+Copy
+Edit
+sudo adduser anu
+Step 3: Switch to anu and Verify
+bash
+Copy
+Edit
+su -- anu
+whoami
+Step 4: Add a New Group (emp1)
+bash
+Copy
+Edit
+sudo addgroup emp1
+Step 5: Add anu to the Group (emp1)
+bash
+Copy
+Edit
+sudo usermod -aG emp1 anu
+Step 6: Verify Group Membership of anu
+bash
+Copy
+Edit
+su -- anu
+groups
+Step 7: Remove anu from the Group (emp1)
+bash
+Copy
+Edit
+su -- prachi
+sudo deluser anu emp1
+su -- anu
+groups
+Step 8: Delete User anu
+bash
+Copy
+Edit
+su -- prachi
+sudo deluser anu
+✅ If an error occurs due to an active session:
+
+bash
+Copy
+Edit
+sudo pkill -u anu
+sudo deluser anu
+Step 9: Delete the Group (emp1)
+bash
+Copy
+Edit
+sudo delgroup emp1
+Step 10: Verify Users and Groups
+✅ List all users:
+
+bash
+Copy
+Edit
+cut -d: -f1 /etc/passwd
+✅ List all groups:
+
+bash
+Copy
+Edit
+cut -d: -f1 /etc/group
+✅ Check if emp1 exists:
+
+bash
+Copy
+Edit
+cat /etc/group | cut -d: -f1,4 | grep emp1
+✅ Check anu group membership (should not exist):
+
+bash
+Copy
+Edit
+groups anu
+✅ Check if current user has sudo rights:
+
+bash
+Copy
+Edit
+sudo whoami
